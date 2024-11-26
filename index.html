@@ -1,9 +1,158 @@
 <!DOCTYPE html>
-<html>
-<body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farm Paradise</title>
 
-<h1>My First Heading</h1>
-<p>My first paragraph.</p>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    /* Parallax Section */
+    .parallax {
+      position: relative;
+      height: 100vh;
+      background-image: url('farm.jpeg'); /* Change to your image URL */
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      transition: background-position 0.1s ease-out;
+    }
+
+    .parallax-content {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: white;
+      text-align: center;
+      z-index: 2;
+    }
+
+    /* Add spin animation */
+    @keyframes spinBox {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .spin {
+      animation: spinBox 2s ease-in-out forwards;
+    }
+
+    /* Box Styling */
+    .box {
+      transition: transform 0.5s ease-in-out;
+      transform: rotate(0deg);
+    }
+
+    /* General Section Styles */
+    .section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .section-light {
+      background-color: #f7fafc;
+    }
+
+    .section-dark {
+      background-color: #2d3748;
+      color: white;
+    }
+  </style>
+</head>
+<body class="font-sans bg-gray-100">
+
+  <!-- Parallax Section -->
+  <section class="parallax" id="parallax">
+    <div class="parallax-content">
+      <h1 class="text-5xl font-bold mb-4">Welcome to Farm Paradise</h1>
+      <p class="text-xl">Experience the beauty of nature and farm life like never before.</p>
+    </div>
+  </section>
+
+  <!-- About the Farm Section -->
+  <section class="section section-light">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-semibold text-gray-800 mb-6">About Our Farm</h2>
+      <p class="text-lg text-gray-700 leading-relaxed mb-6">
+        Our farm is located in the heart of the countryside, where we grow organic crops, raise free-range animals, and embrace sustainable farming practices. Our mission is to provide fresh, healthy produce and to promote a harmonious relationship with the land.
+      </p>
+      <a href="#contact" class="text-white bg-green-500 hover:bg-green-600 px-6 py-3 rounded-full font-medium transition duration-300">Learn More</a>
+    </div>
+  </section>
+
+  <!-- Features Section with Spinning Boxes -->
+  <section class="section section-dark">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+
+      <!-- Box 1 -->
+      <div class="box p-6 bg-white rounded-lg shadow-md" id="box1">
+        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Organic Crops</h3>
+        <p class="text-gray-600">We grow a variety of organic fruits and vegetables, free from chemicals and pesticides.</p>
+      </div>
+
+      <!-- Box 2 -->
+      <div class="box p-6 bg-white rounded-lg shadow-md" id="box2">
+        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Sustainable Practices</h3>
+        <p class="text-gray-600">Our farm uses eco-friendly methods to ensure long-term health for the land and community.</p>
+      </div>
+
+      <!-- Box 3 -->
+      <div class="box p-6 bg-white rounded-lg shadow-md" id="box3">
+        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Farm Tours</h3>
+        <p class="text-gray-600">Come visit us and enjoy an educational tour of our farm to see how we work with nature.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section section-light">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-semibold mb-4">Get in Touch</h2>
+      <p class="text-xl mb-6">We would love to hear from you. Whether you have questions, want to book a tour, or just want to say hello, feel free to reach out!</p>
+      <a href="mailto:info@farmparadise.com" class="text-white bg-green-700 hover:bg-green-800 px-8 py-4 rounded-full font-medium transition duration-300">Email Us</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-4 text-center">
+    <p>&copy; 2024 Farm Paradise. All Rights Reserved.</p>
+  </footer>
+
+  <!-- JavaScript for Parallax Effect and Spinning Boxes -->
+  <script>
+    // Parallax effect
+    const parallax = document.getElementById('parallax');
+    window.addEventListener('scroll', function() {
+      const scrollPosition = window.pageYOffset;
+      parallax.style.backgroundPosition = `center ${scrollPosition * 0.5}px`;
+    });
+
+    // IntersectionObserver to detect when a box enters the viewport
+    const boxes = document.querySelectorAll('.box');
+    
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Add spin effect when box enters viewport
+          entry.target.classList.add('spin');
+        } else {
+          // Remove spin if box is out of view
+          entry.target.classList.remove('spin');
+        }
+      });
+    }, {
+      threshold: 0.5 // Trigger when 50% of the box is in view
+    });
+
+    boxes.forEach(box => observer.observe(box));
+  </script>
 
 </body>
 </html>
