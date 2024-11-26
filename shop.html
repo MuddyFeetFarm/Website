@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop</title>
+    <script type="module">
+        // Import Firebase modules
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+        import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
+
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyBMOh-sCN8UuAZ_cimbnrJx7NknIO8EgwQ",
+  authDomain: "muddyfeetfarm-4253a.firebaseapp.com",
+  projectId: "muddyfeetfarm-4253a",
+  storageBucket: "muddyfeetfarm-4253a.firebasestorage.app",
+  messagingSenderId: "488153232186",
+  appId: "1:488153232186:web:995a5c7d4daab7334c9603",
+  measurementId: "G-1TJPMYDPWK"
+};
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+
+        // Reference to the items node in the database
+        const itemsRef = ref(database, "items");
+
+        // Get the shop container
+        const shopContainer = document.getElementById("shop-container");
+
+        // Retrieve items from the database and display them
+        onValue(itemsRef, (snapshot) => {
+            shopContainer.innerHTML = ""; // Clear the container
+            const items = snapshot.val();
+
+            if (!items) {
+                shopContainer.innerHTML = "<p>No items found in the database.</p>";
+                return;
+            }
+
+            for (const key in items) {
+                if (items.hasOwnProperty(key) && key !== "extras") { // Skip "extras"
+                    const item = items[key];
+                    const itemBox = document.createElement("div");
+                    itemBox.classList.add("item-box");
+
+                    itemBox.innerHTML = `
+                        <div class="item-name">${item.Name || "Unnamed Item"}</div>
+                        <div class="item-description">${item.Description || "No description available."}</div>
+                        <div class="item-price">${item.Price || "Price not listed."}</div>
+                    `;
+
+                    shopContainer.appendChild(itemBox);
+                }
+            }
+        });
+    </script>
+    <style>
+        body {
+            font-family: "Georgia", serif; /* Rustic, farmhouse-style font */
+            margin: 20px;
+            background-color: #f7f1e3; /* Warm cream background */
+            color: #5a3e2b; /* Earthy brown for text */
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #3e683f; /* Forest green for headings */
+            text-shadow: 1px 1px 2px #c7c1a6; /* Soft shadow for farmhouse charm */
+        }
+        .shop-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .item-box {
+            border: 1px solid #c7c1a6; /* Light tan border for a rustic touch */
+            border-radius: 10px;
+            padding: 20px;
+            width: 250px;
+            box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fffef7; /* Light cream box background */
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .item-box:hover {
+            transform: scale(1.05); /* Slight zoom on hover */
+            box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.2);
+        }
+        .item-name {
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #3e683f; /* Forest green for item names */
+        }
+        .item-description {
+            font-size: 1em;
+            margin-bottom: 10px;
+            color: #5a3e2b; /* Earthy brown for descriptions */
+        }
+        .item-price {
+            font-size: 1.2em;
+            color: #cb702d; /* Warm orange-brown for prices */
+            font-weight: bold;
+        }
+        /* Add a subtle border for decorative purposes */
+        .item-box:before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            width: calc(100% + 10px);
+            height: calc(100% + 10px);
+            border: 2px dashed #c7c1a6; /* Dashed tan border for farm aesthetic */
+            border-radius: 12px;
+            z-index: -1;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>Shop</h1>
+    <div class="shop-container" id="shop-container"></div>
+</body>
+</html>
