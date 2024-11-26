@@ -8,67 +8,118 @@
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <style>
+<style>
     /* Parallax Section */
     .parallax {
-      position: relative;
-      height: 100vh;
-      background-image: url('background.jpg'); /* Change to your image URL */
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      transition: background-position 0.1s ease-out;
+        position: relative;
+        height: 100vh;
+        background-image: url('background.jpg'); /* Update with your image URL */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        transition: background-position 0.1s ease-out;
     }
 
-    .parallax-content {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      color: white;
-      text-align: center;
-      z-index: 2;
+    .parallax-content h1 {
+        color: #fef7e1; /* Light cream for better contrast */
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5); /* Enhance visibility */
     }
 
-    /* Add spin animation */
-    @keyframes spinBox {
-      0% {
-        transform: rotate(0deg);
-      }
-      100% {
-        transform: rotate(360deg);
-      }
-    }
-
-    .spin {
-      animation: spinBox 2s ease-in-out forwards;
-    }
-
-    /* Box Styling */
-    .box {
-      transition: transform 0.5s ease-in-out;
-      transform: rotate(0deg);
+    .parallax-content p {
+        color: #fef7e1; /* Same cream tone as heading */
+        font-size: 1.2em;
     }
 
     /* General Section Styles */
     .section {
-      padding: 60px 20px;
-      text-align: center;
+        padding: 60px 20px;
+        text-align: center;
     }
 
     .section-light {
-      background-color: #f7fafc;
+        background-color: #f7f1e3; /* Warm cream for light sections */
+        color: #5a3e2b; /* Earthy brown text */
     }
 
     .section-dark {
-      background-color: #2d3748;
-      color: white;
+        background-color: #3e683f; /* Deep forest green */
+        color: #fef7e1; /* Light cream text */
     }
-  </style>
+
+    /* Spinning Box Styles */
+    .box {
+        background-color: #fffef7; /* Light cream box */
+        border: 1px solid #c7c1a6; /* Light tan border */
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15); /* Subtle shadow */
+        border-radius: 8px;
+        transition: transform 0.5s ease-in-out, box-shadow 0.3s;
+    }
+
+    .box:hover {
+        transform: scale(1.05); /* Slight zoom on hover */
+        box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.25); /* Enhanced shadow */
+    }
+
+    .box h3 {
+        color: #3e683f; /* Forest green for headings */
+    }
+
+    .box p {
+        color: #5a3e2b; /* Earthy brown for descriptions */
+    }
+
+    /* Links */
+    a {
+        color: #cb702d; /* Warm orange-brown for links */
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: #7d3c1e; /* Darker brown on hover */
+    }
+
+    /* Buttons */
+    .btn {
+        display: inline-block;
+        background-color: #cb702d; /* Warm orange-brown */
+        color: white;
+        padding: 10px 20px;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .btn:hover {
+        background-color: #7d3c1e; /* Darker shade */
+        transform: translateY(-2px); /* Lift effect */
+    }
+
+    /* Footer */
+    footer {
+        background-color: #5a3e2b; /* Deep brown footer */
+        color: #fef7e1; /* Light cream text */
+    }
+</style>
+
 </head>
 <body class="font-sans bg-gray-100">
 
+  <!-- Navigation Bar -->
+  <nav class="bg-green-600 text-white px-4 py-3 fixed w-full top-0 shadow-md z-10">
+    <div class="flex justify-between items-center max-w-7xl mx-auto">
+      <a href="index.html" class="text-xl font-bold">Muddy Feet Farm</a>
+      <ul class="flex space-x-6">
+        <li><a href="index.html#home" class="hover:text-green-400">Home</a></li>
+        <li><a href="items.html" class="hover:text-green-400">Shop</a></li>
+        <li><a href="index.html#events" class="hover:text-green-400">Events</a></li>
+        <li><a href="index.html#contact" class="hover:text-green-400">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
   <!-- Parallax Section -->
-  <section class="parallax" id="parallax">
+  <section class="parallax" id="parallax" style="padding-top: 64px;"> <!-- Adjust for nav height -->
     <div class="parallax-content">
       <h1 class="text-5xl font-bold mb-4">Muddy Feet Farm</h1>
       <p class="text-xl">Fresh eggs, handmade items & seasonal produce</p>
@@ -76,7 +127,7 @@
   </section>
 
   <!-- About the Farm Section -->
-  <section class="section section-light">
+  <section class="section section-light" id="home">
     <div class="max-w-4xl mx-auto">
       <h2 class="text-3xl font-semibold text-gray-800 mb-6">About Muddy Feet Farm</h2>
       <p class="text-lg text-gray-700 leading-relaxed mb-6">
@@ -98,60 +149,22 @@
 
       <!-- Box 2 -->
       <div class="box p-6 bg-white rounded-lg shadow-md" id="box2">
-        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Handmade Items<h3>
+        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Handmade Items</h3>
         <p class="text-gray-600">We make lots of handmade items such as Bowl Cozys, Stockings, Wood Signs and much more.</p>
       </div>
 
       <!-- Box 3 -->
       <div class="box p-6 bg-white rounded-lg shadow-md" id="box3">
         <h3 class="text-2xl font-semibold text-gray-800 mb-4">Always Updating</h3>
-        <p class="text-gray-600">Come visit our <a href="https://www.facebook.com/people/Muddy-Feet-Farm/100087053357688/" style="color:blue;">facebook page</a> where we are updating new events, new items and stuff that happens on the farm. </p>
+        <p class="text-gray-600">Come visit our <a href="https://www.facebook.com/people/Muddy-Feet-Farm/100087053357688/" style="color:blue;">facebook page</a> where we are updating new events, new items and stuff that happens on the farm.</p>
       </div>
 
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="section section-light">
-    <div class="max-w-4xl mx-auto">
-      <h2 class="text-3xl font-semibold mb-4">Get in Touch</h2>
-      <p class="text-xl mb-6">We would love to hear from you. Whether you have questions, want to book a tour, or just want to say hello, feel free to reach out!</p>
-      <a href="mailto:info@farmparadise.com" class="text-white bg-green-700 hover:bg-green-800 px-8 py-4 rounded-full font-medium transition duration-300">Email Us</a>
-    </div>
-  </section>
-
   <!-- Footer -->
-  <footer class="bg-gray-800 text-white py-4 text-center">
+  <footer class="bg-green-600 text-white py-4 text-center">
+    <p>&copy; 2024 Muddy Feet Farm. All rights reserved.</p>
   </footer>
-
-  <!-- JavaScript for Parallax Effect and Spinning Boxes -->
-  <script>
-    // Parallax effect
-    const parallax = document.getElementById('parallax');
-    window.addEventListener('scroll', function() {
-      const scrollPosition = window.pageYOffset;
-      parallax.style.backgroundPosition = `center ${scrollPosition * 0.5}px`;
-    });
-
-    // IntersectionObserver to detect when a box enters the viewport
-    const boxes = document.querySelectorAll('.box');
-    
-    const observer = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          // Add spin effect when box enters viewport
-          entry.target.classList.add('spin');
-        } else {
-          // Remove spin if box is out of view
-          entry.target.classList.remove('spin');
-        }
-      });
-    }, {
-      threshold: 0.5 // Trigger when 50% of the box is in view
-    });
-
-    boxes.forEach(box => observer.observe(box));
-  </script>
-
 </body>
 </html>
