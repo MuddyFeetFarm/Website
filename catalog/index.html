@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase Items</title>
+    <script type="module">
+        // Import Firebase modules
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+        import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
+
+        // Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyBMOh-sCN8UuAZ_cimbnrJx7NknIO8EgwQ",
+          authDomain: "muddyfeetfarm-4253a.firebaseapp.com",
+          projectId: "muddyfeetfarm-4253a",
+          storageBucket: "muddyfeetfarm-4253a.firebasestorage.app",
+          messagingSenderId: "488153232186",
+          appId: "1:488153232186:web:995a5c7d4daab7334c9603",
+          measurementId: "G-1TJPMYDPWK"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+
+        // Reference to the items node in the database
+        const itemsRef = ref(database, "items");
+
+        // Get the container for displaying items
+        const shopContainer = document.getElementById("shop-container");
+
+        // Retrieve items from the database and display them
+        onValue(itemsRef, (snapshot) => {
+            shopContainer.innerHTML = ""; // Clear the container
+            const items = snapshot.val();
+
+            if (!items) {
+                shopContainer.innerHTML = "<p>No items found in the database.</p>";
+                return;
+            }
+
+            // Display items while ignoring the "extras" field
+            for (const key in items) {
+                if (key === "extras") continue; // Skip the "extras" field
+
+                if (items.hasOwnProperty(key)) {
+                    const item = items[key];
+                    
+                    // Use ItemName or fallback to Name
+                    const displayName = item.ItemName || item.Name || "Unnamed Item";
+
+                    // Create and append the item element
+                    const itemElement = document.createElement("p");
+                    itemElement.textContent = `${key} - ${displayName}`;
+                    shopContainer.appendChild(itemElement);
+                }
+            }
+        });
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+        }
+        #shop-container {
+            margin: 20px auto;
+            max-width: 600px;
+            padding: 10px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        p {
+            margin: 10px 0;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Items</h1>
+    <div id="shop-container"></div>
+</body>
+</html>
