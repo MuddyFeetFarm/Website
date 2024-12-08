@@ -7,32 +7,12 @@
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Favicon for the page icon -->
-    <link rel="icon" href="MuddyFeetFarm_Logo.png" />
+  <!-- Favicon -->
+  <link rel="icon" href="MuddyFeetFarm_Logo.png" />
 
   <style>
-    /* Parallax Section */
-    .parallax {
-        position: relative;
-        height: 100vh;
-        background-image: url('background.jpg'); /* Update with your image URL */
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        transition: background-position 0.1s ease-out;
-    }
 
-    .parallax-content h1 {
-        color: #fef7e1; /* Light cream for better contrast */
-        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5); /* Enhance visibility */
-    }
-
-    .parallax-content p {
-        color: #fef7e1; /* Same cream tone as heading */
-        font-size: 1.2em;
-    }
-
-    /* General Section Styles */
+         /* General Section Styles */
     .section {
         padding: 80px 20px; /* Increased padding for more spacing */
         text-align: center;
@@ -48,55 +28,29 @@
         color: #fef7e1; /* Light cream text */
     }
 
-    /* Spinning Box Styles */
-    .box {
-        background-color: #fffef7; /* Light cream box */
-        border: 1px solid #c7c1a6; /* Light tan border */
-        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15); /* Subtle shadow */
-        border-radius: 8px;
-        transition: transform 0.5s ease-in-out, box-shadow 0.3s;
-        padding: 30px; /* Increased padding */
+    /* Parallax Section */
+    .parallax {
+        position: relative;
+        height: 100vh;
+        background-image: url('background.jpg'); /* Update with your image URL */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        transition: background-position 0.1s ease-out;
+    }
+
+    /* Box Styles */
+    .box img {
+        width: 100%; /* Ensure the image takes up the full box width */
+        height: 200px; /* Set height for uniform appearance */
+        object-fit: cover; /* Crop image to fit within the dimensions */
+        border-radius: 12px; /* Chamfered corners */
+        margin-bottom: 15px; /* Space between image and text */
     }
 
     .box:hover {
         transform: scale(1.05); /* Slight zoom on hover */
         box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.25); /* Enhanced shadow */
-    }
-
-    .box h3 {
-        color: #3e683f; /* Forest green for headings */
-        margin-bottom: 15px; /* Added margin to give space between heading and text */
-    }
-
-    .box p {
-        color: #5a3e2b; /* Earthy brown for descriptions */
-    }
-
-    /* Links */
-    a {
-        color: #cb702d; /* Warm orange-brown for links */
-        text-decoration: none;
-    }
-
-    a:hover {
-        color: #7d3c1e; /* Darker brown on hover */
-    }
-
-    /* Buttons */
-    .btn {
-        display: inline-block;
-        background-color: #cb702d; /* Warm orange-brown */
-        color: white;
-        padding: 12px 25px; /* Increased padding for bigger buttons */
-        border-radius: 25px;
-        text-decoration: none;
-        font-weight: bold;
-        transition: background-color 0.3s, transform 0.3s;
-    }
-
-    .btn:hover {
-        background-color: #7d3c1e; /* Darker shade */
-        transform: translateY(-2px); /* Lift effect */
     }
 
     /* Footer */
@@ -105,11 +59,6 @@
         color: #fef7e1; /* Light cream text */
         padding: 30px 20px; /* Added padding for better spacing */
     }
-
-            nav img {
-            height: 40px; /* Size of the logo */
-            margin-right: 10px; /* Space between the logo and the text */
-        }
   </style>
 
 </head>
@@ -118,25 +67,22 @@
 <!-- Navigation Bar -->
 <nav class="bg-green-600 text-white px-4 py-3 fixed w-full top-0 shadow-md z-10">
   <div class="flex justify-between items-center max-w-7xl mx-auto">
-    <div class="flex items-center space-x-2"> <!-- Group logo and text together -->
+    <div class="flex items-center space-x-2">
       <a href="index.html">
-        <img src="MuddyFeetFarm_Logo.png" alt="Logo">
+        <img src="MuddyFeetFarm_Logo.png" alt="Logo" class="h-10">
       </a>
-      <a href="index.html" class="text-xl font-bold">Muddy Feet Farm</a> <!-- Removed inline style and added to the flex group -->
+      <a href="index.html" class="text-xl font-bold">Muddy Feet Farm</a>
     </div>
 
     <ul class="flex space-x-6">
-      <li><a href="index.html#home" class="hover:text-green-400">Home</a></li>
+      <li><a href="muddyfeet.farm/index.html" class="hover:text-green-400">Home</a></li>
       <li><a href="shop.html" class="hover:text-green-400">Shop</a></li>
-      <li><a href="index.html#events" class="hover:text-green-400">Events</a></li>
-      <li><a href="index.html#contact" class="hover:text-green-400">Contact</a></li>
+      <li><a href="muddyfeet.farm/MeetTheFarm" class="hover:text-green-400">Meet the Animals</a></li>
+      <li><a href="#contact" class="hover:text-green-400">Contact</a></li>
     </ul>
   </div>
 </nav>
-
-
-
-
+        
   <!-- About the Farm Section -->
   <section class="section section-light" id="home">
     <div class="max-w-4xl mx-auto">
@@ -148,41 +94,47 @@
     </div>
   </section>
 
-  <!-- Features Section with Spinning Boxes -->
-  <section class="section section-dark">
-    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16 text-center"> <!-- Increased gap -->
-      <!-- Box 1 -->
-      <div class="box p-6 bg-white rounded-lg shadow-md" id="box1">
-        <h3 class="text-2xl font-semibold text-gray-800 mb-6">Fresh Eggs</h3> <!-- Increased bottom margin -->
-        <p class="text-gray-600">We have a variety of farm fresh chicken eggs, but they run out fast.</p>
-      </div>
-
-      <!-- Box 2 -->
-      <div class="box p-6 bg-white rounded-lg shadow-md" id="box2">
-        <h3 class="text-2xl font-semibold text-gray-800 mb-6">Handmade Items</h3> <!-- Increased bottom margin -->
-        <p class="text-gray-600">We make lots of handmade items such as Bowl Cozys, Stockings, Wood Signs and much more.</p>
-      </div>
-
-      <!-- Box 3 -->
-      <div class="box p-6 bg-white rounded-lg shadow-md" id="box3">
-        <h3 class="text-2xl font-semibold text-gray-800 mb-6">Always Updating</h3> <!-- Increased bottom margin -->
-        <p class="text-gray-600">Come visit our <a href="https://www.facebook.com/people/Muddy-Feet-Farm/100087053357688/" style="color:blue;">facebook page</a> where we are updating new events, new items and stuff that happens on the farm.</p>
-      </div>
+<!-- Features Section with Animal Boxes -->
+<section class="section section-dark">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+    <!-- Box 1 -->
+    <div class="box p-6 bg-white rounded-lg shadow-md">
+      <img src="Onyx.jpeg" alt="Onyx the Snake">
+      <h3 class="text-2xl font-semibold text-gray-800 mb-2">Onyx the Snake</h3>
+      <p class="text-gray-600">A friendly snake that loves basking in the sun!</p>
     </div>
-  </section>
+    <!-- Box 2 -->
+    <div class="box p-6 bg-white rounded-lg shadow-md">
+      <img src="Clover.jpeg" alt="Clover the Duck">
+      <h3 class="text-2xl font-semibold text-gray-800 mb-2">Clover</h3>
+      <p class="text-gray-600">One of our ducks, loves to play in the water.</p>
+    </div>
+    <!-- Box 3 -->
+    <div class="box p-6 bg-white rounded-lg shadow-md">
+      <img src="Kiwi.jpeg" alt="Cluckers the Chicken">
+      <h3 class="text-2xl font-semibold text-gray-800 mb-2">Kiwi</h3>
+      <p class="text-gray-600">This Rooster acts the part, and likes to boss the others around!</p>
+    </div>
+    <!-- Box 4 -->
+    <div class="box p-6 bg-white rounded-lg shadow-md">
+      <img src="GummyBear.jpeg" alt="Gizmo the Goat">
+      <h3 class="text-2xl font-semibold text-gray-800 mb-2">GummyBear</h3>
+      <p class="text-gray-600">A rooster who always plays friendly.</p>
+    </div>
+    <!-- Box 5 -->
+    <div class="box p-6 bg-white rounded-lg shadow-md">
+      <img src="Pineapple.jpeg" alt="Pineapple">
+      <h3 class="text-2xl font-semibold text-gray-800 mb-2">Pineapple</h3>
+      <p class="text-gray-600">A joyful hen who loves to hang out with the other chickens.</p>
+    </div>
+  </div>
+</section>
 
-  <!-- Footer -->
-  <footer class="bg-green-600 text-white py-6 text-center"> <!-- Increased padding -->
-    <p>&copy; 2024 Muddy Feet Farm. All rights reserved.</p>
-  </footer>
 
-  <!-- Parallax Scroll Effect Script -->
-  <script>
-    window.addEventListener('scroll', function() {
-      let scrolled = window.scrollY;
-      document.querySelector('.parallax').style.backgroundPosition = 'center ' + (scrolled * 0.5) + 'px';
-    });
-  </script>
+<!-- Footer -->
+<footer class="bg-green-600 text-white py-6 text-center">
+  <p>&copy; 2024 Muddy Feet Farm. All rights reserved.</p>
+</footer>
 
 </body>
 </html>
