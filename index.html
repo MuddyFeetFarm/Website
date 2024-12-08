@@ -115,23 +115,25 @@
 </head>
 <body class="font-sans bg-gray-100">
 
-  <!-- Navigation Bar -->
-  <nav class="bg-green-600 text-white px-4 py-3 fixed w-full top-0 shadow-md z-10">
-    <div class="flex justify-between items-center max-w-7xl mx-auto">
-            <a href="index.html">
-                <img src="MuddyFeetFarm_Logo.png">
-            </a>
-            <a href="index.html" class="text-xl font-bold">Muddy Feet Farm</a>
-
-      <ul class="flex space-x-6">
-          
-        <li><a href="index.html#home" class="hover:text-green-400">Home</a></li>
-        <li><a href="shop.html" class="hover:text-green-400">Shop</a></li>
-        <li><a href="index.html#events" class="hover:text-green-400">Events</a></li>
-        <li><a href="index.html#contact" class="hover:text-green-400">Contact</a></li>
-      </ul>
+<!-- Navigation Bar -->
+<nav class="bg-green-600 text-white px-4 py-3 fixed w-full top-0 shadow-md z-10">
+  <div class="flex justify-between items-center max-w-7xl mx-auto">
+    <div class="flex items-center space-x-2"> <!-- Group logo and text together -->
+      <a href="index.html">
+        <img src="MuddyFeetFarm_Logo.png" alt="Logo">
+      </a>
+      <a href="index.html" class="text-xl font-bold">Muddy Feet Farm</a> <!-- Removed inline style and added to the flex group -->
     </div>
-  </nav>
+
+    <ul class="flex space-x-6">
+      <li><a href="index.html#home" class="hover:text-green-400">Home</a></li>
+      <li><a href="shop.html" class="hover:text-green-400">Shop</a></li>
+      <li><a href="index.html#events" class="hover:text-green-400">Events</a></li>
+      <li><a href="index.html#contact" class="hover:text-green-400">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
 
   <!-- Parallax Section -->
   <section class="parallax" id="parallax" style="padding-top: 64px;"> <!-- Adjust for nav height -->
