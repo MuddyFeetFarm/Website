@@ -11,62 +11,47 @@
   <link rel="icon" href="MuddyFeetFarm_Logo.png" />
 
   <style>
-    /* General Section Styles */
-    .section {
-        padding: 80px 20px;
-        text-align: center;
-    }
-
-    .section-light {
-        background-color: #f7f1e3;
-        color: #5a3e2b;
-    }
-
-    .section-dark {
-        background-color: #3e683f;
-        color: #fef7e1;
-    }
-
-    /* Parallax Section */
+    /* Parallax Section for Mobile */
     .parallax {
-        position: relative;
-        height: 100vh;
-        background-image: url('background.jpg');
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        transition: background-position 0.1s ease-out;
+      position: relative;
+      height: 60vh; /* Reduced height for mobile */
+      background-image: url('background.jpg');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      transition: background-position 0.1s ease-out;
     }
 
     /* Box Styles */
     .box img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-        border-radius: 12px;
-        margin-bottom: 15px;
+      max-width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 15px;
     }
 
     .box:hover {
-        transform: scale(1.05);
-        box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.25);
+      transform: scale(1.05);
+      box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.25);
     }
 
-    /* Footer */
-    footer {
-        background-color: #5a3e2b;
-        color: #fef7e1;
-        padding: 30px 20px;
+    /* Mobile Menu Toggle */
+    .mobile-menu {
+      display: none;
+    }
+    @media (max-width: 768px) {
+      .mobile-menu {
+        display: block;
+      }
     }
   </style>
-
 </head>
 <body class="font-sans bg-gray-100">
 
 <!-- Navigation Bar -->
 <nav class="bg-green-600 text-white px-4 py-3 fixed w-full top-0 shadow-md z-10">
   <div class="flex justify-between items-center max-w-7xl mx-auto">
-    <!-- Logo -->
     <div class="flex items-center space-x-2">
       <a href="index.html">
         <img src="MuddyFeetFarm_Logo.png" alt="Logo" class="h-10">
@@ -74,27 +59,37 @@
       <a href="index.html" class="text-xl font-bold">Muddy Feet Farm</a>
     </div>
 
-    <!-- Hamburger Menu Button -->
-    <button id="menu-btn" class="block sm:hidden focus:outline-none">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-      </svg>
-    </button>
-
-    <!-- Navigation Links -->
-    <ul id="menu" class="hidden sm:flex space-x-6">
+    <!-- Desktop Menu -->
+    <ul class="hidden md:flex space-x-6">
       <li><a href="https://muddyfeet.farm" class="hover:text-green-400">Home</a></li>
       <li><a href="https://muddyfeet.farm/shop" class="hover:text-green-400">Shop</a></li>
       <li><a href="./MeetTheFarm" class="hover:text-green-400">Meet the Animals</a></li>
       <li><a href="#contact" class="hover:text-green-400">Contact</a></li>
     </ul>
+
+    <!-- Mobile Menu Toggle -->
+    <div class="md:hidden mobile-menu">
+      <button id="menu-toggle" class="focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu Items -->
+  <div id="mobile-menu-items" class="hidden flex flex-col space-y-2 bg-green-700 p-4 md:hidden">
+    <a href="https://muddyfeet.farm" class="text-white hover:text-green-400">Home</a>
+    <a href="https://muddyfeet.farm/shop" class="text-white hover:text-green-400">Shop</a>
+    <a href="./MeetTheFarm" class="text-white hover:text-green-400">Meet the Animals</a>
+    <a href="#contact" class="text-white hover:text-green-400">Contact</a>
   </div>
 </nav>
 
 <!-- About the Farm Section -->
-<section class="section section-light" id="home">
+<section class="section section-light mt-16" id="home">
   <div class="max-w-4xl mx-auto">
-      <center> <img src="MuddyFeetFarm_Logo.png" alt="Muddy Feet Farm Logo Big"></center>
+    <center><img src="MuddyFeetFarm_Logo.png" alt="Muddy Feet Farm Logo Big"></center>
     <h2 class="text-3xl font-semibold text-gray-800 mb-8">Meet the Animals</h2>
     <p class="text-lg text-gray-700 leading-relaxed mb-8">
       Read below to hear about all the animals at Muddy Feet Farm.
@@ -102,16 +97,47 @@
   </div>
 </section>
 
+ </section>
+
 <!-- Features Section with Animal Boxes -->
 <section class="section section-dark">
   <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 text-center">
-    <!-- Animal Boxes -->
+    <!-- Box 1 -->
     <div class="box p-6 bg-white rounded-lg shadow-md">
       <img src="Onyx.jpeg" alt="Onyx the Snake">
       <h3 class="text-2xl font-semibold text-gray-800 mb-2">Onyx the Snake</h3>
       <p class="text-gray-600">A friendly snake that loves basking in the sun!</p>
     </div>
-    <!-- Add other animal boxes here -->
+    <!-- Box 2 -->
+    <div class="box p-6 bg-white rounded-lg shadow-md">
+      <img src="Clover.jpeg" alt="Clover the Duck">
+      <h3 class="text-2xl font-semibold text-gray-800 mb-2">Clover</h3>
+      <p class="text-gray-600">One of our ducks, loves to play in the water.</p>
+    </div>
+    <!-- Box 3 -->
+    <div class="box p-6 bg-white rounded-lg shadow-md">
+      <img src="Kiwi.jpeg" alt="Kiwi the Rooster">
+      <h3 class="text-2xl font-semibold text-gray-800 mb-2">Kiwi</h3>
+      <p class="text-gray-600">This Rooster acts the part, and likes to boss the others around!</p>
+    </div>
+    <!-- Box 4 -->
+    <div class="box p-6 bg-white rounded-lg shadow-md">
+      <img src="GummyBear.jpeg" alt="GummyBear the Rooster">
+      <h3 class="text-2xl font-semibold text-gray-800 mb-2">GummyBear</h3>
+      <p class="text-gray-600">A rooster who always plays friendly.</p>
+    </div>
+    <!-- Box 5 -->
+    <div class="box p-6 bg-white rounded-lg shadow-md">
+      <img src="Pineapple.jpeg" alt="Pineapple">
+      <h3 class="text-2xl font-semibold text-gray-800 mb-2">Pineapple</h3>
+      <p class="text-gray-600">A joyful hen who loves to hang out with the other chickens.</p>
+    </div>
+    <!-- Box 6 -->
+    <div class="box p-6 bg-white rounded-lg shadow-md">
+      <img src="Pepper.jpg" alt="Pepper the German Shepherd">
+      <h3 class="text-2xl font-semibold text-gray-800 mb-2">Pepper</h3>
+      <p class="text-gray-600">Pepper is a playful German Shepherd.</p>
+    </div>
   </div>
 </section>
 
@@ -121,17 +147,13 @@
 </footer>
 
 <script>
-  // Hamburger Menu Toggle
-  const menuBtn = document.getElementById('menu-btn');
-  const menu = document.getElementById('menu');
+  // Mobile Menu Toggle Script
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenuItems = document.getElementById('mobile-menu-items');
 
-  menuBtn.addEventListener('click', () => {
-    menu.classList.toggle('hidden');
-    menu.classList.toggle('flex');
-    menu.classList.toggle('flex-col');
-    menu.classList.toggle('space-y-4');
+  menuToggle.addEventListener('click', () => {
+    mobileMenuItems.classList.toggle('hidden');
   });
 </script>
-
 </body>
 </html>
