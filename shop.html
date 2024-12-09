@@ -12,20 +12,19 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
-        /* Body and general page styling */
         body {
-            font-family: "Georgia", serif; /* Rustic, farmhouse-style font */
+            font-family: "Georgia", serif;
             margin: 20px;
-            background-color: #f7f1e3; /* Warm cream background */
-            color: #5a3e2b; /* Earthy brown for text */
-            padding-top: 80px; /* Add padding to prevent navbar from overlapping content */
+            background-color: #f7f1e3;
+            color: #5a3e2b;
+            padding-top: 80px;
         }
         h1 {
             text-align: center;
             font-size: 2.5em;
             margin-bottom: 20px;
-            color: #3e683f; /* Forest green for headings */
-            text-shadow: 1px 1px 2px #c7c1a6; /* Soft shadow for farmhouse charm */
+            color: #3e683f;
+            text-shadow: 1px 1px 2px #c7c1a6;
         }
         .shop-container {
             display: flex;
@@ -34,32 +33,32 @@
             justify-content: center;
         }
         .item-box {
-            border: 1px solid #c7c1a6; /* Light tan border for a rustic touch */
+            border: 1px solid #c7c1a6;
             border-radius: 10px;
             padding: 20px;
             width: 250px;
             box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
-            background-color: #fffef7; /* Light cream box background */
+            background-color: #fffef7;
             transition: transform 0.2s, box-shadow 0.2s;
         }
         .item-box:hover {
-            transform: scale(1.05); /* Slight zoom on hover */
+            transform: scale(1.05);
             box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.2);
         }
         .item-name {
             font-size: 1.4em;
             font-weight: bold;
             margin-bottom: 10px;
-            color: #3e683f; /* Forest green for item names */
+            color: #3e683f;
         }
         .item-description {
             font-size: 1em;
             margin-bottom: 10px;
-            color: #5a3e2b; /* Earthy brown for descriptions */
+            color: #5a3e2b;
         }
         .item-price {
             font-size: 1.2em;
-            color: #cb702d; /* Warm orange-brown for prices */
+            color: #cb702d;
             font-weight: bold;
         }
     </style>
@@ -67,19 +66,33 @@
 <body>
     <!-- Navigation Bar -->
     <nav class="bg-green-600 text-white px-4 py-3 fixed w-full top-0 shadow-md z-10">
-        <div class="flex justify-between items-center max-w-7xl mx-auto">
-            <!-- Logo to the left of the name -->
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <!-- Logo -->
             <a href="index.html" class="flex items-center">
                 <img src="MuddyFeetFarm_Logo.png" alt="Muddy Feet Farm Logo" class="h-10 w-auto mr-3">
                 <span class="text-xl font-bold">Muddy Feet Farm</span>
             </a>
-            <ul class="flex space-x-6 ml-auto">
+            <!-- Hamburger Menu -->
+            <button id="menu-button" class="lg:hidden focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+            <!-- Links -->
+            <ul id="menu" class="hidden lg:flex space-x-6">
                 <li><a href="./#home" class="hover:text-green-400">Home</a></li>
                 <li><a href="./shop.html" class="hover:text-green-400">Shop</a></li>
                 <li><a href="./MeetTheFarm" class="hover:text-green-400">Meet the Animals</a></li>
                 <li><a href="#contact" class="hover:text-green-400">Contact</a></li>
             </ul>
         </div>
+        <!-- Dropdown for mobile -->
+        <ul id="mobile-menu" class="hidden flex-col mt-2 lg:hidden">
+            <li><a href="./#home" class="block py-2 px-4 hover:bg-green-700">Home</a></li>
+            <li><a href="./shop.html" class="block py-2 px-4 hover:bg-green-700">Shop</a></li>
+            <li><a href="./MeetTheFarm" class="block py-2 px-4 hover:bg-green-700">Meet the Animals</a></li>
+            <li><a href="#contact" class="block py-2 px-4 hover:bg-green-700">Contact</a></li>
+        </ul>
     </nav>
 
     <div class="shop-container" id="shop-container">
@@ -87,7 +100,7 @@
     </div>
 
     <script type="module">
-        // Import Firebase modules
+        // Firebase initialization script
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
         import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
 
@@ -101,19 +114,14 @@
             measurementId: "G-1TJPMYDPWK"
         };
 
-        // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const database = getDatabase(app);
 
-        // Reference to the items node in the database
         const itemsRef = ref(database, "items");
-
-        // Get the shop container
         const shopContainer = document.getElementById("shop-container");
 
-        // Retrieve items from the database and display them
         onValue(itemsRef, (snapshot) => {
-            shopContainer.innerHTML = ""; // Clear the container
+            shopContainer.innerHTML = "";
             const items = snapshot.val();
 
             if (!items) {
@@ -122,7 +130,7 @@
             }
 
             for (const key in items) {
-                if (items.hasOwnProperty(key) && key !== "extras") { // Skip "extras"
+                if (items.hasOwnProperty(key) && key !== "extras") {
                     const item = items[key];
                     const itemBox = document.createElement("div");
                     itemBox.classList.add("item-box");
@@ -136,6 +144,15 @@
                     shopContainer.appendChild(itemBox);
                 }
             }
+        });
+
+        // Hamburger menu toggle
+        const menuButton = document.getElementById("menu-button");
+        const menu = document.getElementById("menu");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        menuButton.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
         });
     </script>
 </body>
