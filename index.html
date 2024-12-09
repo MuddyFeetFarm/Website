@@ -4,194 +4,100 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Muddy Feet Farms</title>
-
+  
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Favicon for the page icon -->
-    <link rel="icon" href="MuddyFeetFarm_Logo.png" />
-
+  <link rel="icon" href="MuddyFeetFarm_Logo.png" />
+  
   <style>
     /* Parallax Section */
     .parallax {
-        position: relative;
-        height: 100vh;
-        background-image: url('background.jpg'); /* Update with your image URL */
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        transition: background-position 0.1s ease-out;
+      position: relative;
+      height: 100vh;
+      background-image: url('background.jpg'); /* Update with your image URL */
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      transition: background-position 0.1s ease-out;
     }
-
     .parallax-content h1 {
-        color: #fef7e1; /* Light cream for better contrast */
-        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5); /* Enhance visibility */
+      color: #fef7e1;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
     }
-
     .parallax-content p {
-        color: #fef7e1; /* Same cream tone as heading */
-        font-size: 1.2em;
+      color: #fef7e1;
     }
-
-    /* General Section Styles */
-    .section {
-        padding: 80px 20px; /* Increased padding for more spacing */
-        text-align: center;
-    }
-
-    .section-light {
-        background-color: #f7f1e3; /* Warm cream for light sections */
-        color: #5a3e2b; /* Earthy brown text */
-    }
-
-    .section-dark {
-        background-color: #3e683f; /* Deep forest green */
-        color: #fef7e1; /* Light cream text */
-    }
-
-    /* Spinning Box Styles */
-    .box {
-        background-color: #fffef7; /* Light cream box */
-        border: 1px solid #c7c1a6; /* Light tan border */
-        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15); /* Subtle shadow */
-        border-radius: 8px;
-        transition: transform 0.5s ease-in-out, box-shadow 0.3s;
-        padding: 30px; /* Increased padding */
-    }
-
-    .box:hover {
-        transform: scale(1.05); /* Slight zoom on hover */
-        box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.25); /* Enhanced shadow */
-    }
-
-    .box h3 {
-        color: #3e683f; /* Forest green for headings */
-        margin-bottom: 15px; /* Added margin to give space between heading and text */
-    }
-
-    .box p {
-        color: #5a3e2b; /* Earthy brown for descriptions */
-    }
-
-    /* Links */
-    a {
-        color: #cb702d; /* Warm orange-brown for links */
-        text-decoration: none;
-    }
-
-    a:hover {
-        color: #7d3c1e; /* Darker brown on hover */
-    }
-
-    /* Buttons */
-    .btn {
-        display: inline-block;
-        background-color: #cb702d; /* Warm orange-brown */
-        color: white;
-        padding: 12px 25px; /* Increased padding for bigger buttons */
-        border-radius: 25px;
-        text-decoration: none;
-        font-weight: bold;
-        transition: background-color 0.3s, transform 0.3s;
-    }
-
-    .btn:hover {
-        background-color: #7d3c1e; /* Darker shade */
-        transform: translateY(-2px); /* Lift effect */
-    }
-
-    /* Footer */
-    footer {
-        background-color: #5a3e2b; /* Deep brown footer */
-        color: #fef7e1; /* Light cream text */
-        padding: 30px 20px; /* Added padding for better spacing */
-    }
-
-nav img {
-    width: auto; /* Keeps the aspect ratio */
-    height: 40px; /* Adjust this value to set the icon height */
-    max-height: 100%; /* Ensures the icon doesn't overflow */
-
-    margin-right: 10px; /* Space between the logo and the text */
-        }
   </style>
-
 </head>
 <body class="font-sans bg-gray-100">
 
 <!-- Navigation Bar -->
 <nav class="bg-green-600 text-white px-4 py-3 fixed w-full top-0 shadow-md z-10">
-  <div class="flex justify-between items-center max-w-7xl mx-auto">
-    <div class="flex items-center space-x-2"> <!-- Group logo and text together -->
+  <div class="flex justify-between items-center max-w-7xl mx-auto flex-wrap">
+    <div class="flex items-center space-x-2">
       <a href="index.html">
-        <img src="MuddyFeetFarm_Logo.png" alt="Logo">
+        <img src="MuddyFeetFarm_Logo.png" alt="Logo" class="h-10">
       </a>
-      <a href="index.html" class="text-xl font-bold">Muddy Feet Farm</a> <!-- Removed inline style and added to the flex group -->
+      <a href="index.html" class="text-xl font-bold">Muddy Feet Farm</a>
     </div>
-
-    <ul class="flex space-x-6">
+    <ul class="flex space-x-4 sm:space-x-6 flex-wrap">
       <li><a href="index.html#home" class="hover:text-green-400">Home</a></li>
       <li><a href="shop.html" class="hover:text-green-400">Shop</a></li>
-    <li><a href="./MeetTheFarm" class="hover:text-green-400">Meet the Animals</a></li>
+      <li><a href="./MeetTheFarm" class="hover:text-green-400">Meet the Animals</a></li>
       <li><a href="index.html#contact" class="hover:text-green-400">Contact</a></li>
     </ul>
   </div>
 </nav>
 
+<!-- Parallax Section -->
+<section class="parallax flex justify-center items-center text-center px-4">
+  <div class="parallax-content">
+    <h1 class="text-4xl sm:text-5xl font-bold mb-4">Muddy Feet Farm</h1>
+    <p class="text-lg sm:text-xl">Fresh eggs, handmade items & seasonal produce</p>
+  </div>
+</section>
 
-  <!-- Parallax Section -->
-  <section class="parallax" id="parallax" style="padding-top: 64px;"> <!-- Adjust for nav height -->
-    <div class="parallax-content">
-      <h1 class="text-5xl font-bold mb-6">Muddy Feet Farm</h1> <!-- Increased bottom margin -->
-      <p class="text-xl">Fresh eggs, handmade items & seasonal produce</p>
+<!-- About Section -->
+<section class="section bg-white py-10 px-6 text-center" id="home">
+  <div class="max-w-4xl mx-auto">
+    <img src="MuddyFeetFarm_Logo.png" alt="Muddy Feet Farm Logo" class="mx-auto mb-6">
+    <h2 class="text-2xl sm:text-3xl font-semibold text-gray-800 mb-4">About Muddy Feet Farm</h2>
+    <p class="text-base sm:text-lg text-gray-700 leading-relaxed">
+      Our roadside farm stand offers farm fresh eggs, hand-painted signs, handmade items & seasonal produce.
+    </p>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="bg-green-600 text-white py-10 px-6">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="box p-6 bg-white text-gray-800 rounded-lg shadow-md">
+      <h3 class="text-xl font-semibold mb-4">Fresh Eggs</h3>
+      <p>We have a variety of farm fresh chicken eggs for only $5.00 a dozen, but they run out fast.</p>
     </div>
-  </section>
-
-  <!-- About the Farm Section -->
-  <section class="section section-light" id="home">
-    <div class="max-w-4xl mx-auto">
-        <center> <img src="MuddyFeetFarm_Logo.png" alt= "Muddy Feet Farm Logo Big"></center>
-      <h2 class="text-3xl font-semibold text-gray-800 mb-8">About Muddy Feet Farm</h2> <!-- Increased margin -->
-      <p class="text-lg text-gray-700 leading-relaxed mb-8"> <!-- Increased bottom margin -->
-        Our roadside farm stand offers farm fresh eggs, hand painted signs, handmade items & seasonal produce.
-      </p>
+    <div class="box p-6 bg-white text-gray-800 rounded-lg shadow-md">
+      <h3 class="text-xl font-semibold mb-4">Handmade Items</h3>
+      <p>We make lots of handmade items such as bowl cozys, stockings, wood signs, and much more.</p>
     </div>
-  </section>
-
-  <!-- Features Section with Spinning Boxes -->
-  <section class="section section-dark">
-    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16 text-center"> <!-- Increased gap -->
-      <!-- Box 1 -->
-      <div class="box p-6 bg-white rounded-lg shadow-md" id="box1">
-        <h3 class="text-2xl font-semibold text-gray-800 mb-6">Fresh Eggs</h3> <!-- Increased bottom margin -->
-        <p class="text-gray-600">We have a variety of farm fresh chicken eggs for only 5.00 a dozen, but they run out fast.</p>
-      </div>
-
-      <!-- Box 2 -->
-      <div class="box p-6 bg-white rounded-lg shadow-md" id="box2">
-        <h3 class="text-2xl font-semibold text-gray-800 mb-6">Handmade Items</h3> <!-- Increased bottom margin -->
-        <p class="text-gray-600">We make lots of handmade items such as Bowl Cozys, Stockings, Wood Signs and much more.</p>
-      </div>
-
-      <!-- Box 3 -->
-      <div class="box p-6 bg-white rounded-lg shadow-md" id="box3">
-        <h3 class="text-2xl font-semibold text-gray-800 mb-6">Always Updating</h3> <!-- Increased bottom margin -->
-        <p class="text-gray-600">Come visit our <a href="https://www.facebook.com/people/Muddy-Feet-Farm/100087053357688/" style="color:blue;">facebook page</a> where we are updating new events, new items and stuff that happens on the farm.</p>
-      </div>
+    <div class="box p-6 bg-white text-gray-800 rounded-lg shadow-md">
+      <h3 class="text-xl font-semibold mb-4">Always Updating</h3>
+      <p>Visit our <a href="https://www.facebook.com/people/Muddy-Feet-Farm/100087053357688/" class="text-blue-500 underline">Facebook page</a> for updates, events, and new items.</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Footer -->
-  <footer class="bg-green-600 text-white py-6 text-center"> <!-- Increased padding -->
-    <p>&copy; 2024 Muddy Feet Farm. All rights reserved.</p>
-  </footer>
+<!-- Footer -->
+<footer class="bg-green-600 text-white py-6">
+  <p class="text-center">&copy; 2024 Muddy Feet Farm. All rights reserved.</p>
+</footer>
 
-  <!-- Parallax Scroll Effect Script -->
-  <script>
-    window.addEventListener('scroll', function() {
-      let scrolled = window.scrollY;
-      document.querySelector('.parallax').style.backgroundPosition = 'center ' + (scrolled * 0.5) + 'px';
-    });
-  </script>
+<!-- Parallax Scroll Effect -->
+<script>
+  window.addEventListener('scroll', function() {
+    let scrolled = window.scrollY;
+    document.querySelector('.parallax').style.backgroundPosition = 'center ' + (scrolled * 0.5) + 'px';
+  });
+</script>
 
 </body>
 </html>
